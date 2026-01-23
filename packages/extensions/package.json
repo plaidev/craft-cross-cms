@@ -1,0 +1,16 @@
+{
+  "name": "@craft-cross-cms/rich-text-extensions",
+  "version": "0.0.0",
+  "private": false,
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "scripts": {
+    "lint": "pnpm run \"/^lint:.*/\"",
+    "lint:knip": "knip",
+    "lint:prettier": "prettier --check ."
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "packageManager": "pnpm@10.28.0"
+}

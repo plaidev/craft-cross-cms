@@ -1,0 +1,8 @@
+packages:
+  - packages/*
+
+catalog:
+  knip: ^5.82.1
+  prettier: ^3.8.1
+  prettier-plugin-organize-imports: ^4.3.0
+  turbo: ^2.7.5

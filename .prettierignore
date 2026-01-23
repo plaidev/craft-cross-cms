@@ -1,0 +1,5 @@
+.pnpm-store
+pnpm-lock.yaml
+.turbo
+.claude
+.prettierignore

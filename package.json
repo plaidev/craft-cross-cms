@@ -1,0 +1,18 @@
+{
+  "name": "@craft-cross-cms/rich-text",
+  "private": true,
+  "scripts": {
+    "lint": "pnpm run \"/^lint:.*/\"",
+    "lint:knip": "knip",
+    "lint:prettier": "prettier --check .",
+    "fix": "turbo run fix && prettier --write ."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "knip": "catalog:",
+    "prettier": "catalog:",
+    "prettier-plugin-organize-imports": "catalog:",
+    "turbo": "catalog:"
+  },
+  "packageManager": "pnpm@10.28.0"
+}

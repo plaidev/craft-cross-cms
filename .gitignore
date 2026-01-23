@@ -1,0 +1,27 @@
+# Logs
+*.log
+pnpm-debug.log*
+
+# Test coverage
+coverage/
+
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Build outputs
+dist/
+
+# Turborepo files
+.turbo
+
+# OS
+.DS_Store
