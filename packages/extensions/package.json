@@ -2,11 +2,54 @@
   "name": "@craft-cross-cms/rich-text-extensions",
   "version": "0.0.0",
   "private": false,
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
-  "scripts": {},
-  "dependencies": {},
-  "devDependencies": {},
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "test": "vitest run --passWithNoTests",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@tiptap/core": "catalog:",
+    "@tiptap/extension-blockquote": "catalog:",
+    "@tiptap/extension-bold": "catalog:",
+    "@tiptap/extension-code": "catalog:",
+    "@tiptap/extension-code-block-lowlight": "catalog:",
+    "@tiptap/extension-document": "catalog:",
+    "@tiptap/extension-hard-break": "catalog:",
+    "@tiptap/extension-heading": "catalog:",
+    "@tiptap/extension-highlight": "catalog:",
+    "@tiptap/extension-horizontal-rule": "catalog:",
+    "@tiptap/extension-italic": "catalog:",
+    "@tiptap/extension-link": "catalog:",
+    "@tiptap/extension-list": "catalog:",
+    "@tiptap/extension-paragraph": "catalog:",
+    "@tiptap/extension-strike": "catalog:",
+    "@tiptap/extension-subscript": "catalog:",
+    "@tiptap/extension-superscript": "catalog:",
+    "@tiptap/extension-table": "catalog:",
+    "@tiptap/extension-text": "catalog:",
+    "@tiptap/extension-text-align": "catalog:",
+    "@tiptap/extension-text-style": "catalog:",
+    "@tiptap/extension-underline": "catalog:",
+    "@tiptap/extensions": "catalog:",
+    "@tiptap/markdown": "catalog:",
+    "@tiptap/pm": "catalog:",
+    "lowlight": "3.3.0"
+  },
+  "devDependencies": {
+    "@tiptap/starter-kit": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
+    "jsdom": "27.4.0",
+    "rimraf": "catalog:",
+    "rollup": "catalog:",
+    "vitest": "catalog:"
+  },
   "packageManager": "pnpm@10.28.0"
 }
