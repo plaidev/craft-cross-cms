@@ -5,11 +5,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
-  "scripts": {
-    "lint": "pnpm run \"/^lint:.*/\"",
-    "lint:knip": "knip",
-    "lint:prettier": "prettier --check ."
-  },
+  "scripts": {},
   "dependencies": {},
   "devDependencies": {},
   "packageManager": "pnpm@10.28.0"

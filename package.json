@@ -1,18 +1,28 @@
 {
   "name": "@craft-cross-cms/rich-text",
   "private": true,
+  "type": "module",
   "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "test": "turbo run test",
     "lint": "pnpm run \"/^lint:.*/\"",
+    "lint:eslint": "eslint .",
     "lint:knip": "knip",
     "lint:prettier": "prettier --check .",
-    "fix": "turbo run fix && prettier --write ."
+    "fix": "pnpm run \"/^fix:.*/\"",
+    "fix:eslint": "eslint . --fix",
+    "fix:prettier": "prettier --write ."
   },
-  "dependencies": {},
   "devDependencies": {
+    "@eslint/js": "catalog:",
+    "eslint": "catalog:",
+    "eslint-config-prettier": "catalog:",
     "knip": "catalog:",
     "prettier": "catalog:",
     "prettier-plugin-organize-imports": "catalog:",
-    "turbo": "catalog:"
+    "turbo": "catalog:",
+    "typescript-eslint": "catalog:"
   },
   "packageManager": "pnpm@10.28.0"
 }
