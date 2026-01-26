@@ -1,6 +1,11 @@
 {
   "name": "@craft-cross-cms/rich-text",
   "private": true,
+  "description": "A monorepo for all NPM packages related to Rich Text",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/plaidev/xcms-rich-text.git"
+  },
   "type": "module",
   "scripts": {
     "build": "turbo run build",

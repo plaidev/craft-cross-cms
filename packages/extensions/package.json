@@ -1,7 +1,20 @@
 {
   "name": "@craft-cross-cms/rich-text-extensions",
-  "version": "0.0.0",
-  "private": false,
+  "version": "0.0.1",
+  "description": "TipTap-based rich text extensions for Craft Cross CMS",
+  "author": "PLAID, Inc.",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/plaidev/xcms-rich-text.git",
+    "directory": "packages/extensions"
+  },
+  "keywords": [
+    "craft-cross-cms"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -16,9 +29,6 @@
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
@@ -59,6 +69,5 @@
     "jsdom": "27.4.0",
     "tsup": "catalog:",
     "vitest": "catalog:"
-  },
-  "packageManager": "pnpm@10.28.0"
+  }
 }
