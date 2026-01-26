@@ -16,12 +16,16 @@ node_modules/
 .env
 .env.*
 !.env.example
+*.local
 
 # Build outputs
 dist/
 
 # Turborepo files
 .turbo
+
+# Claude Code
+.claude
 
 # OS
 .DS_Store
