@@ -1,13 +1,13 @@
 {
-  "name": "@craft-cross-cms/rich-text-extensions",
+  "name": "@craft-cross-cms/rich-text-core",
   "version": "0.0.1",
-  "description": "TipTap-based rich text extensions for Craft Cross CMS",
+  "description": "TipTap-based rich text core for Craft Cross CMS",
   "author": "PLAID, Inc.",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/plaidev/xcms-rich-text.git",
-    "directory": "packages/extensions"
+    "directory": "packages/core"
   },
   "keywords": [
     "craft-cross-cms"
