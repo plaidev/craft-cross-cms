@@ -13,6 +13,3 @@ export type { ResolveAssetFn } from './extensions/index.js';
 
 // Options
 export { RICH_TEXT_EDITOR_OPTIONS, type RichTextEditorOptions } from './options.js';
-
-// Types
-export type { AssetData } from './types/asset.js';

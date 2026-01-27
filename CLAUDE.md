@@ -73,10 +73,6 @@ pnpm fix:prettier        # Prettierフォーマットを自動修正
 - `RICH_TEXT_EDITOR_OPTIONS`: エディタで利用可能な全機能を列挙した定数
 - 型: `RichTextEditorOptions`
 
-**型定義:**
-
-- `AssetData`: アセット情報を表す型
-
 ## テスト
 
 - テストファイルは`*.test.ts`の命名規則を使用
