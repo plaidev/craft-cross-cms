@@ -1,6 +1,6 @@
 // Tiptap core re-exports
 export { Editor, generateHTML, generateJSON, generateText } from '@tiptap/core';
-export type { JSONContent, Extensions } from '@tiptap/core';
+export type { Extensions, JSONContent } from '@tiptap/core';
 
 // Extensions
 export {
