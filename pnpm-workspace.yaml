@@ -2,6 +2,7 @@ packages:
   - packages/*
 
 catalog:
+  '@changesets/cli': 'catalog:'
   '@eslint/js': 9.39.2
   '@tiptap/core': 3.10.1
   '@tiptap/extension-blockquote': 3.10.1

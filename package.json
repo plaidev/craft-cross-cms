@@ -23,9 +23,12 @@
     "lint:prettier": "prettier --check .",
     "fix": "pnpm run \"/^fix:.*/\"",
     "fix:eslint": "eslint . --fix",
-    "fix:prettier": "prettier --write ."
+    "fix:prettier": "prettier --write .",
+    "ci:version": "changeset version && pnpm install --no-frozen-lockfile",
+    "ci:publish": "pnpm build && pnpm test && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "catalog:",
     "@eslint/js": "catalog:",
     "eslint": "catalog:",
     "eslint-config-prettier": "catalog:",
