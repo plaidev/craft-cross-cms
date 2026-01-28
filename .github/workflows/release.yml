@@ -7,7 +7,7 @@ name: Release
 #       - main
 
 on:
-  workflow_dispatch:  # Manual trigger only
+  workflow_dispatch: # Manual trigger only
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
