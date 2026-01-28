@@ -50,50 +50,49 @@ console.log(json);
 
 ### Image Handling
 
-When displaying images in rich text content, you can use the following approach:
+When converting HTML to JSON, ensure that `img` tags include the following attributes:
 
-#### Setting Image Attributes Directly in HTML
+#### Required Image Attributes
 
-Set `src`, `alt`, `width`, `height`, and `data-asset-id` attributes directly on the `img` tag without using `resolveAsset`.
+When creating HTML content that will be converted to JSON, set `data-asset-id`, `src`, `alt`, `width`, and `height` attributes on the `img` tag.
 
 ```typescript
-import { buildTiptapExtensions } from '@craft-cross-cms/rich-text-core';
-import { generateHTML } from '@tiptap/html';
+import { generateJSON, buildTiptapExtensions } from '@craft-cross-cms/rich-text-core';
 
-// Rich text JSON with image data
-const richTextJson = {
-  type: 'doc',
-  content: [
-    {
-      type: 'cmsImage',
-      attrs: {
-        id: 'asset123',
-        src: 'https://example.com/image.jpg',
-        alt: 'Image description',
-        width: 800,
-        height: 600,
-      },
-    },
-  ],
-};
+// HTML with properly formatted image
+const html = `
+  <img src="https://example.com/image.jpg"
+       alt="Image description"
+       width="800"
+       height="600"
+       data-asset-id="asset123">
+`;
 
-// Build extensions without resolveAsset
-const extensions = buildTiptapExtensions({
-  resolveAsset: undefined, // or omit this option
-});
+// Build extensions
+const extensions = buildTiptapExtensions({});
 
-// Generate HTML
-const html = generateHTML(richTextJson, extensions);
+// Convert HTML to JSON
+const json = generateJSON(html, extensions);
 
-// Generated HTML:
-// <img src="https://example.com/image.jpg"
-//      alt="Image description"
-//      width="800"
-//      height="600"
-//      data-asset-id="asset123">
+// Generated JSON:
+// {
+//   type: 'doc',
+//   content: [
+//     {
+//       type: 'cmsImage',
+//       attrs: {
+//         id: 'asset123',
+//         src: 'https://example.com/image.jpg',
+//         alt: 'Image description',
+//         width: 800,
+//         height: 600,
+//       },
+//     },
+//   ],
+// }
 ```
 
-This approach requires including all image information in the rich text JSON.
+All five attributes (`data-asset-id`, `src`, `alt`, `width`, `height`) are required for proper JSON conversion.
 
 ### Embed Elements
 
