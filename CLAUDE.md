@@ -2,7 +2,9 @@
 
 ## プロジェクト概要
 
-TipTap（ProseMirror）をベースにしたCraft Cross CMSのリッチテキスト機能を提供するモノレポです。HTMLとJSON間の変換機能を含むリッチテキスト編集・処理機能を提供します。
+Craft Cross CMS（xcms）のパッケージを提供するモノレポです。TipTap（ProseMirror）をベースにしたリッチテキスト機能など、HTMLとJSON間の変換機能を含むリッチテキスト編集・処理機能を提供します。
+
+**命名規則**: パッケージは `@plaidev/xcms-*` の形式で公開されます（例: `@plaidev/xcms-rich-text`）。
 
 ## コマンド
 
@@ -44,11 +46,11 @@ pnpm fix:prettier        # Prettierフォーマットを自動修正
 
 - **Turboベースのモノレポ**: Turborepoを使用してパッケージ間のビルドとタスクを管理
 - **pnpmワークスペース**: pnpmのワークスペースとカタログ機能で依存関係を管理
-- **単一パッケージ**: 現在は`packages/core`のみを含む
+- **パッケージ**: `packages/xcms-rich-text`など、今後も増える予定
 
-### パッケージ: @craft-cross-cms/rich-text-core
+### パッケージ: @plaidev/xcms-rich-text
 
-メインエントリポイント: `packages/core/src/index.ts`
+メインエントリポイント: `packages/xcms-rich-text/src/index.ts`
 
 **主要なエクスポート:**
 

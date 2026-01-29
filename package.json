@@ -1,12 +1,12 @@
 {
-  "name": "@craft-cross-cms/rich-text",
+  "name": "craft-cross-cms",
   "private": true,
-  "description": "A monorepo for all NPM packages related to Rich Text",
+  "description": "A monorepo for Craft Cross CMS (xcms) packages",
   "license": "Apache-2.0",
   "author": "PLAID, Inc.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/plaidev/xcms-rich-text.git"
+    "url": "https://github.com/plaidev/craft-cross-cms.git"
   },
   "engines": {
     "node": ">=20"
