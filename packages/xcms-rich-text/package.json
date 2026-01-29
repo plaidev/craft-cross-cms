@@ -1,13 +1,13 @@
 {
-  "name": "@craft-cross-cms/rich-text-core",
+  "name": "@plaidev/xcms-rich-text",
   "version": "0.0.1",
-  "description": "TipTap-based rich text core for Craft Cross CMS",
+  "description": "TipTap-based rich text core for Craft Cross CMS (xcms)",
   "license": "Apache-2.0",
   "author": "PLAID, Inc.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/plaidev/xcms-rich-text.git",
-    "directory": "packages/core"
+    "url": "https://github.com/plaidev/craft-cross-cms.git",
+    "directory": "packages/xcms-rich-text"
   },
   "engines": {
     "node": ">=20"

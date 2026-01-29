@@ -1,4 +1,4 @@
-# @craft-cross-cms/rich-text-core
+# @plaidev/xcms-rich-text
 
 TipTap-based rich text core for Craft Cross CMS.
 This library provides HTML to JSON conversion functionality for rich text content.
@@ -8,25 +8,25 @@ This library provides HTML to JSON conversion functionality for rich text conten
 ### Installation
 
 ```bash
-npm install @craft-cross-cms/rich-text-core
+npm install @plaidev/xcms-rich-text
 ```
 
 or
 
 ```bash
-pnpm add @craft-cross-cms/rich-text-core
+pnpm add @plaidev/xcms-rich-text
 ```
 
 or
 
 ```bash
-yarn add @craft-cross-cms/rich-text-core
+yarn add @plaidev/xcms-rich-text
 ```
 
 ### Usage
 
 ```typescript
-import { generateJSON, buildTiptapExtensions } from '@craft-cross-cms/rich-text-core';
+import { generateJSON, buildTiptapExtensions } from '@plaidev/xcms-rich-text';
 
 const html = '<p>Hello <strong>World</strong>!</p>';
 const json = generateJSON(html, buildTiptapExtensions({}));
@@ -57,7 +57,7 @@ When converting HTML to JSON, ensure that `img` tags include the following attri
 When creating HTML content that will be converted to JSON, set `data-asset-id`, `src`, `alt`, `width`, and `height` attributes on the `img` tag.
 
 ```typescript
-import { generateJSON, buildTiptapExtensions } from '@craft-cross-cms/rich-text-core';
+import { generateJSON, buildTiptapExtensions } from '@plaidev/xcms-rich-text';
 
 // HTML with properly formatted image
 const html = `
