@@ -1,27 +1,27 @@
 version: 2
 updates:
   # npm (pnpm) の依存関係
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "10:00"
-      timezone: "Asia/Tokyo"
+      interval: 'weekly'
+      day: 'monday'
+      time: '10:00'
+      timezone: 'Asia/Tokyo'
     groups:
       # devDependencies をまとめる
       dev-dependencies:
-        dependency-type: "development"
+        dependency-type: 'development'
       # TipTap関連をまとめる
       tiptap:
         patterns:
-          - "@tiptap/*"
+          - '@tiptap/*'
     open-pull-requests-limit: 10
 
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  - package-ecosystem: 'github-actions'
+    directory: '/'
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "10:00"
-      timezone: "Asia/Tokyo"
+      interval: 'weekly'
+      day: 'monday'
+      time: '10:00'
+      timezone: 'Asia/Tokyo'
