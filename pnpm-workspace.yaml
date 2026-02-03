@@ -33,7 +33,7 @@ catalog:
   '@vitest/coverage-v8': 4.0.18
   eslint: 9.39.2
   eslint-config-prettier: 10.1.8
-  knip: 5.82.1
+  knip: 5.83.0
   prettier: 3.8.1
   prettier-plugin-organize-imports: 4.3.0
   tsup: 8.5.1
