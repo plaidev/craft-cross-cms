@@ -38,6 +38,10 @@ export function generateCmsEmbedExtension({ renderer }: { renderer?: EmbedRender
             'data-url': attributes.url,
           }),
         },
+        // Stores the actual embed HTML (e.g., iframe from OEmbed providers).
+        // Tiptap's renderHTML() requires DOMOutputSpec, so actual embed HTML cannot be
+        // rendered as child nodes. Instead, we store it as a data attribute and replace
+        // it with actual HTML during final output (via replaceEmbedElements on server).
         embedHtml: {
           default: '',
           parseHTML: (element) => {
@@ -66,8 +70,8 @@ export function generateCmsEmbedExtension({ renderer }: { renderer?: EmbedRender
         ];
       }
 
-      // Note: FEで表示する時はembedHtml がない場合があるが、必ずDomOutputSpecを返す必要があるためプレースホルダー的なタグを返すようにしている
-      // 実際にはFEのレンダリング時はaddNodeViewが呼び出される
+      // When rendering on frontend, embedHtml may not be available, but DomOutputSpec must always be returned,
+      // so we return a placeholder tag. In actual frontend rendering, addNodeView will be called instead.
       return [
         'div',
         mergeAttributes(HTMLAttributes, {

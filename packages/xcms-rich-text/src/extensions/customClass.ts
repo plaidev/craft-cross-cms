@@ -33,8 +33,8 @@ declare module '@tiptap/core' {
  */
 export const CustomClass = Mark.create<CustomClassOptions>({
   name: 'customClass',
-  // TextStyleKit (priority: 101)と同等。Bold/Italic等の基本的なテキスト装飾と
-  // 同じレベルで処理され、共存可能
+  // Same priority as TextStyleKit (101). Processed at the same level as basic text
+  // decorations like Bold/Italic and can coexist with them.
   priority: 101,
 
   addOptions() {
@@ -67,9 +67,9 @@ export const CustomClass = Mark.create<CustomClassOptions>({
     return [
       {
         tag: 'span[class]',
-        // TextStyle(priority: 101)より低い優先度に設定。
-        // 既存の`<span style="...">`をTextStyleとして優先的にパースし、
-        // classのみのspanをこのExtensionで処理
+        // Lower priority than TextStyle (101). This ensures `<span style="...">`
+        // is parsed as TextStyle first, and only class-only spans are handled
+        // by this extension.
         priority: 51,
       },
     ];

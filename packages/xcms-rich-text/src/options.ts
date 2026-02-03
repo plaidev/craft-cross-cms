@@ -1,4 +1,4 @@
-// rich text editorで利用可能な機能を全て列挙。
+// All available features for the rich text editor.
 export const RICH_TEXT_EDITOR_OPTIONS = {
   // NODE OPTIONS
   PARAGRAPH: 'paragraph',

@@ -9,16 +9,16 @@ import { CustomClass } from './customClass.js';
 describe('CustomClass Extension', () => {
   describe('parseHTML', () => {
     it('should parse span with class attribute as customClass mark', () => {
-      // given: HTMLコンテンツにspan[class]が含まれる
+      // given
       const html = '<p><span class="custom-highlight">テキスト</span></p>';
 
-      // when: EditorにHTMLを設定
+      // when
       const editor = new Editor({
         extensions: [StarterKit, CustomClass],
         content: html,
       });
 
-      // then: customClassマークとして認識される
+      // then
       const json = editor.getJSON();
       expect(json.content?.[0]?.content?.[0]?.marks).toEqual([
         { type: 'customClass', attrs: { class: 'custom-highlight' } },
@@ -28,16 +28,16 @@ describe('CustomClass Extension', () => {
     });
 
     it('should parse span with multiple classes as customClass mark', () => {
-      // given: HTMLコンテンツにspan[class]で複数クラスが含まれる
+      // given with multiple classes
       const html = '<p><span class="custom-highlight another-class">テキスト</span></p>';
 
-      // when: EditorにHTMLを設定
+      // when
       const editor = new Editor({
         extensions: [StarterKit, CustomClass],
         content: html,
       });
 
-      // then: customClassマークとして認識される
+      // then
       const json = editor.getJSON();
       expect(json.content?.[0]?.content?.[0]?.marks).toEqual([
         { type: 'customClass', attrs: { class: 'custom-highlight another-class' } },
@@ -47,16 +47,16 @@ describe('CustomClass Extension', () => {
     });
 
     it('should not parse span without class attribute', () => {
-      // given: HTMLコンテンツにclassのないspanが含まれる
+      // given
       const html = '<p><span>テキスト</span></p>';
 
-      // when: EditorにHTMLを設定
+      // when
       const editor = new Editor({
         extensions: [StarterKit, CustomClass],
         content: html,
       });
 
-      // then: customClassマークとして認識されない
+      // then
       const json = editor.getJSON();
       expect(json.content?.[0]?.content?.[0]).toEqual({
         type: 'text',
@@ -69,7 +69,7 @@ describe('CustomClass Extension', () => {
 
   describe('renderHTML', () => {
     it('should render customClass mark as span with class attribute and data attribute', () => {
-      // given: customClassマークを持つJSON
+      // given
       const content = {
         type: 'doc',
         content: [
@@ -86,13 +86,13 @@ describe('CustomClass Extension', () => {
         ],
       };
 
-      // when: EditorにJSONを設定
+      // when
       const editor = new Editor({
         extensions: [StarterKit, CustomClass],
         content,
       });
 
-      // then: span[class]とdata-custom-class属性として出力される
+      // then
       const html = editor.getHTML();
       expect(html).toBe(
         '<p><span data-custom-class="true" class="custom-highlight">テキスト</span></p>',
@@ -102,7 +102,7 @@ describe('CustomClass Extension', () => {
     });
 
     it('should not render class attribute when class is null', () => {
-      // given: customClassマークでclass属性がnull
+      // given
       const content = {
         type: 'doc',
         content: [
@@ -119,13 +119,13 @@ describe('CustomClass Extension', () => {
         ],
       };
 
-      // when: EditorにJSONを設定
+      // when
       const editor = new Editor({
         extensions: [StarterKit, CustomClass],
         content,
       });
 
-      // then: classがnullの場合でもspanタグとdata属性は残る
+      // then
       const html = editor.getHTML();
       expect(html).toBe('<p><span data-custom-class="true">テキスト</span></p>');
 
@@ -133,7 +133,7 @@ describe('CustomClass Extension', () => {
     });
 
     it('should not render class attribute when class contains uppercase letters', () => {
-      // given: customClassマークで大文字を含むclass
+      // given
       const content = {
         type: 'doc',
         content: [
@@ -150,13 +150,13 @@ describe('CustomClass Extension', () => {
         ],
       };
 
-      // when: EditorにJSONを設定
+      // when
       const editor = new Editor({
         extensions: [StarterKit, CustomClass],
         content,
       });
 
-      // then: バリデーションで無効と判定されclass属性は出力されないが、data属性は残る
+      // then
       const html = editor.getHTML();
       expect(html).toBe('<p><span data-custom-class="true">テキスト</span></p>');
 
@@ -164,7 +164,7 @@ describe('CustomClass Extension', () => {
     });
 
     it('should render class attribute with multiple classes separated by space', () => {
-      // given: customClassマークで複数クラスをスペース区切りで指定
+      // given
       const content = {
         type: 'doc',
         content: [
@@ -181,13 +181,13 @@ describe('CustomClass Extension', () => {
         ],
       };
 
-      // when: EditorにJSONを設定
+      // when
       const editor = new Editor({
         extensions: [StarterKit, CustomClass],
         content,
       });
 
-      // then: 複数クラスとdata属性が正しく出力される
+      // then
       const html = editor.getHTML();
       expect(html).toBe(
         '<p><span data-custom-class="true" class="my-class another-class">テキスト</span></p>',
@@ -197,7 +197,7 @@ describe('CustomClass Extension', () => {
     });
 
     it('should not render class attribute when class has leading space', () => {
-      // given: customClassマークで先頭にスペースを含むclass
+      // given
       const content = {
         type: 'doc',
         content: [
@@ -214,13 +214,13 @@ describe('CustomClass Extension', () => {
         ],
       };
 
-      // when: EditorにJSONを設定
+      // when
       const editor = new Editor({
         extensions: [StarterKit, CustomClass],
         content,
       });
 
-      // then: バリデーションで無効と判定されclass属性は出力されないが、data属性は残る
+      // then
       const html = editor.getHTML();
       expect(html).toBe('<p><span data-custom-class="true">テキスト</span></p>');
 
@@ -228,7 +228,7 @@ describe('CustomClass Extension', () => {
     });
 
     it('should not render class attribute when class has trailing space', () => {
-      // given: customClassマークで末尾にスペースを含むclass
+      // given
       const content = {
         type: 'doc',
         content: [
@@ -245,13 +245,13 @@ describe('CustomClass Extension', () => {
         ],
       };
 
-      // when: EditorにJSONを設定
+      // when
       const editor = new Editor({
         extensions: [StarterKit, CustomClass],
         content,
       });
 
-      // then: バリデーションで無効と判定されclass属性は出力されないが、data属性は残る
+      // then
       const html = editor.getHTML();
       expect(html).toBe('<p><span data-custom-class="true">テキスト</span></p>');
 
@@ -259,7 +259,7 @@ describe('CustomClass Extension', () => {
     });
 
     it('should not render class attribute when class has consecutive spaces', () => {
-      // given: customClassマークで連続スペースを含むclass
+      // given
       const content = {
         type: 'doc',
         content: [
@@ -276,13 +276,13 @@ describe('CustomClass Extension', () => {
         ],
       };
 
-      // when: EditorにJSONを設定
+      // when
       const editor = new Editor({
         extensions: [StarterKit, CustomClass],
         content,
       });
 
-      // then: バリデーションで無効と判定されclass属性は出力されないが、data属性は残る
+      // then
       const html = editor.getHTML();
       expect(html).toBe('<p><span data-custom-class="true">テキスト</span></p>');
 
@@ -290,7 +290,7 @@ describe('CustomClass Extension', () => {
     });
 
     it('should not render class attribute when class contains special characters', () => {
-      // given: customClassマークで特殊文字を含むclass
+      // given
       const content = {
         type: 'doc',
         content: [
@@ -307,13 +307,13 @@ describe('CustomClass Extension', () => {
         ],
       };
 
-      // when: EditorにJSONを設定
+      // when
       const editor = new Editor({
         extensions: [StarterKit, CustomClass],
         content,
       });
 
-      // then: バリデーションで無効と判定されclass属性は出力されないが、data属性は残る
+      // then
       const html = editor.getHTML();
       expect(html).toBe('<p><span data-custom-class="true">テキスト</span></p>');
 
@@ -321,7 +321,7 @@ describe('CustomClass Extension', () => {
     });
 
     it('should not render class attribute when class is empty string', () => {
-      // given: customClassマークで空文字列のclass
+      // given
       const content = {
         type: 'doc',
         content: [
@@ -338,13 +338,13 @@ describe('CustomClass Extension', () => {
         ],
       };
 
-      // when: EditorにJSONを設定
+      // when
       const editor = new Editor({
         extensions: [StarterKit, CustomClass],
         content,
       });
 
-      // then: バリデーションで無効と判定されclass属性は出力されないが、data属性は残る
+      // then
       const html = editor.getHTML();
       expect(html).toBe('<p><span data-custom-class="true">テキスト</span></p>');
 
@@ -355,17 +355,17 @@ describe('CustomClass Extension', () => {
   describe('commands', () => {
     describe('setCustomClass', () => {
       it('should apply customClass mark to selected text', () => {
-        // given: テキストが選択された状態のEditor
+        // given
         const editor = new Editor({
           extensions: [StarterKit, CustomClass],
           content: '<p>テキスト</p>',
         });
 
-        // when: setCustomClassコマンドを実行
-        editor.commands.setTextSelection({ from: 1, to: 5 }); // "テキスト"を選択
+        // when
+        editor.commands.setTextSelection({ from: 1, to: 5 });
         editor.commands.setCustomClass({ class: 'my-class' });
 
-        // then: customClassマークとdata属性が適用される
+        // then
         const html = editor.getHTML();
         expect(html).toBe('<p><span data-custom-class="true" class="my-class">テキスト</span></p>');
 
@@ -373,17 +373,17 @@ describe('CustomClass Extension', () => {
       });
 
       it('should update existing customClass mark', () => {
-        // given: 既にcustomClassマークが適用されているテキスト
+        // given
         const editor = new Editor({
           extensions: [StarterKit, CustomClass],
           content: '<p><span data-custom-class="true" class="old-class">テキスト</span></p>',
         });
 
-        // when: setCustomClassコマンドで別のクラスを設定
+        // when
         editor.commands.setTextSelection({ from: 1, to: 5 });
         editor.commands.setCustomClass({ class: 'new-class' });
 
-        // then: クラスが更新される
+        // then
         const html = editor.getHTML();
         expect(html).toBe(
           '<p><span data-custom-class="true" class="new-class">テキスト</span></p>',
@@ -395,17 +395,17 @@ describe('CustomClass Extension', () => {
 
     describe('unsetCustomClass', () => {
       it('should remove customClass mark from selected text', () => {
-        // given: customClassマークが適用されているテキスト
+        // given
         const editor = new Editor({
           extensions: [StarterKit, CustomClass],
           content: '<p><span data-custom-class="true" class="my-class">テキスト</span></p>',
         });
 
-        // when: unsetCustomClassコマンドを実行
+        // when
         editor.commands.setTextSelection({ from: 1, to: 5 });
         editor.commands.unsetCustomClass();
 
-        // then: customClassマークが削除される
+        // then
         const html = editor.getHTML();
         expect(html).toBe('<p>テキスト</p>');
 
@@ -413,17 +413,17 @@ describe('CustomClass Extension', () => {
       });
 
       it('should do nothing if customClass mark is not present', () => {
-        // given: customClassマークがないテキスト
+        // given
         const editor = new Editor({
           extensions: [StarterKit, CustomClass],
           content: '<p>テキスト</p>',
         });
 
-        // when: unsetCustomClassコマンドを実行
+        // when
         editor.commands.setTextSelection({ from: 1, to: 5 });
         editor.commands.unsetCustomClass();
 
-        // then: 何も変わらない
+        // then
         const html = editor.getHTML();
         expect(html).toBe('<p>テキスト</p>');
 
@@ -434,7 +434,7 @@ describe('CustomClass Extension', () => {
 
   describe('options', () => {
     it('should merge HTMLAttributes from options', () => {
-      // given: HTMLAttributesオプションを持つCustomClass
+      // given
       const editor = new Editor({
         extensions: [
           StarterKit,
@@ -461,10 +461,10 @@ describe('CustomClass Extension', () => {
         },
       });
 
-      // when: HTMLを出力
+      // when
       const html = editor.getHTML();
 
-      // then: デフォルトのdata-custom-class属性とオプションの属性とclass属性がマージされる
+      // then
       expect(html).toBe(
         '<p><span data-custom-class="true" data-custom="true" class="my-class">テキスト</span></p>',
       );

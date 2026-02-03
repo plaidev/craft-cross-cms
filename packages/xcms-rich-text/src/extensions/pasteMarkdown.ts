@@ -3,7 +3,7 @@ import { Plugin, PluginKey } from '@tiptap/pm/state';
 
 export interface PasteMarkdownOptions {
   /**
-   * ペーストされたテキストをMarkdownとして変換するかどうか
+   * Whether to transform pasted text as Markdown
    * @default true
    */
   transformPastedText: boolean;
@@ -38,23 +38,20 @@ export const PasteMarkdown = Extension.create<PasteMarkdownOptions>({
             }
 
             try {
-              // Markdownをパース
+              // Requires @tiptap/markdown extension to be registered.
+              // If not available, fall back to default paste behavior.
               if (!this.editor.markdown || typeof this.editor.markdown.parse !== 'function') {
-                // Markdown extensionが利用できない場合はデフォルト処理に任せる
                 return false;
               }
 
               const json = this.editor.markdown.parse(text);
 
-              // パース成功時だけデフォルト動作を防ぐ
               event.preventDefault();
 
-              // パースしたコンテンツを挿入
               this.editor.commands.insertContent(json);
               return true;
             } catch (error) {
               console.error('Failed to parse pasted Markdown:', error);
-              // エラー時はデフォルト処理に任せる（text/htmlがあればそれを使う）
               return false;
             }
           },
@@ -64,25 +61,26 @@ export const PasteMarkdown = Extension.create<PasteMarkdownOptions>({
   },
 
   addStorage() {
-    return {
-      // 将来的な拡張のため
-    };
+    return {};
   },
 });
 
-function looksLikeMarkdown(text: string): boolean {
-  // 以下のパターンのいずれかにマッチすればMarkdownと判断
+/**
+ * Checks if the given text looks like Markdown content.
+ * Returns true if any of the common Markdown patterns are found.
+ */
+export function looksLikeMarkdown(text: string): boolean {
   const patterns = [
-    /^#{1,6}\s/m, // 見出し: # ## ###
-    /^[-*+]\s/m, // 箇条書き: - * +
-    /^\d+\.\s/m, // 順序付きリスト: 1. 2.
-    /^>\s/m, // 引用: >
-    /```/, // コードブロック: ```
-    /\*\*[^*]+\*\*/, // 太字: **text**
-    /\*[^*]+\*/, // イタリック: *text*
-    /\[.+\]\(.+\)/, // リンク: [text](url)
-    /^---+$/m, // 水平線: ---
-    /\|.+\|/, // テーブル: | cell | cell |
+    /^#{1,6}\s/m, // Headings: # ## ###
+    /^[-*+]\s/m, // Unordered list: - * +
+    /^\d+\.\s/m, // Ordered list: 1. 2.
+    /^>\s/m, // Blockquote: >
+    /```/, // Code block: ```
+    /\*\*[^*]+\*\*/, // Bold: **text**
+    /\*[^*]+\*/, // Italic: *text*
+    /\[.+\]\(.+\)/, // Link: [text](url)
+    /^---+$/m, // Horizontal rule: ---
+    /\|.+\|/, // Table: | cell | cell |
   ];
 
   return patterns.some((pattern) => pattern.test(text));

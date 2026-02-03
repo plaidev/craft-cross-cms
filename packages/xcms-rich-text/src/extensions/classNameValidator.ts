@@ -1,22 +1,22 @@
 /**
- * クラス名バリデーション用の正規表現パターン
+ * Regular expression pattern for class name validation
  *
- * ルール:
- * - 先頭: アルファベット（小文字）必須
- * - 使用可能文字: 英数字（小文字）、ハイフン、アンダースコア、スペース
- * - 末尾: スペース以外
- * - 連続スペース: 不可
+ * Rules:
+ * - Must start with a lowercase letter
+ * - Allowed characters: lowercase alphanumeric, hyphens, underscores, spaces
+ * - Must not end with a space
+ * - Consecutive spaces are not allowed
  *
- * 例:
- * - OK: "my-class", "my class", "class-1"
- * - NG: "1-class" (数字始まり), "my-class " (末尾スペース), "my  class" (連続スペース)
+ * Examples:
+ * - Valid: "my-class", "my class", "class-1"
+ * - Invalid: "1-class" (starts with digit), "my-class " (trailing space), "my  class" (consecutive spaces)
  */
 export const CLASS_NAME_PATTERN = /^[a-z]([a-z0-9_-]| [a-z0-9_-])*$/;
 
 /**
- * CSSクラス名として有効な文字列かを検証
- * 英数字（小文字）、ハイフン、アンダースコア、スペースを許可
- * スペース区切りで複数クラス指定可能
+ * Validates if a string is a valid CSS class name.
+ * Allows lowercase alphanumeric characters, hyphens, underscores, and spaces.
+ * Multiple classes can be specified separated by spaces.
  */
 export const isValidClassName = (className: string): boolean => {
   return CLASS_NAME_PATTERN.test(className);
