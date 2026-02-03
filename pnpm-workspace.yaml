@@ -4,32 +4,32 @@ packages:
 catalog:
   '@changesets/cli': 2.29.8
   '@eslint/js': 9.39.2
-  '@tiptap/core': 3.10.1
-  '@tiptap/extension-blockquote': 3.10.1
-  '@tiptap/extension-bold': 3.10.1
-  '@tiptap/extension-code': 3.10.1
-  '@tiptap/extension-code-block-lowlight': 3.10.1
-  '@tiptap/extension-document': 3.10.1
-  '@tiptap/extension-hard-break': 3.10.1
-  '@tiptap/extension-heading': 3.10.1
-  '@tiptap/extension-highlight': 3.10.1
-  '@tiptap/extension-horizontal-rule': 3.10.1
-  '@tiptap/extension-italic': 3.10.1
-  '@tiptap/extension-link': 3.10.1
-  '@tiptap/extension-list': 3.10.1
-  '@tiptap/extension-paragraph': 3.10.1
-  '@tiptap/extension-strike': 3.10.1
-  '@tiptap/extension-subscript': 3.10.1
-  '@tiptap/extension-superscript': 3.10.1
-  '@tiptap/extension-table': 3.10.1
-  '@tiptap/extension-text': 3.10.1
-  '@tiptap/extension-text-align': 3.10.1
-  '@tiptap/extension-text-style': 3.10.1
-  '@tiptap/extension-underline': 3.10.1
-  '@tiptap/extensions': 3.10.1
-  '@tiptap/markdown': 3.10.1
-  '@tiptap/pm': 3.10.1
-  '@tiptap/starter-kit': 3.10.1
+  '@tiptap/core': 3.18.0
+  '@tiptap/extension-blockquote': 3.18.0
+  '@tiptap/extension-bold': 3.18.0
+  '@tiptap/extension-code': 3.18.0
+  '@tiptap/extension-code-block-lowlight': 3.18.0
+  '@tiptap/extension-document': 3.18.0
+  '@tiptap/extension-hard-break': 3.18.0
+  '@tiptap/extension-heading': 3.18.0
+  '@tiptap/extension-highlight': 3.18.0
+  '@tiptap/extension-horizontal-rule': 3.18.0
+  '@tiptap/extension-italic': 3.18.0
+  '@tiptap/extension-link': 3.18.0
+  '@tiptap/extension-list': 3.18.0
+  '@tiptap/extension-paragraph': 3.18.0
+  '@tiptap/extension-strike': 3.18.0
+  '@tiptap/extension-subscript': 3.18.0
+  '@tiptap/extension-superscript': 3.18.0
+  '@tiptap/extension-table': 3.18.0
+  '@tiptap/extension-text': 3.18.0
+  '@tiptap/extension-text-align': 3.18.0
+  '@tiptap/extension-text-style': 3.18.0
+  '@tiptap/extension-underline': 3.18.0
+  '@tiptap/extensions': 3.18.0
+  '@tiptap/markdown': 3.18.0
+  '@tiptap/pm': 3.18.0
+  '@tiptap/starter-kit': 3.18.0
   '@vitest/coverage-v8': 4.0.18
   eslint: 9.39.2
   eslint-config-prettier: 10.1.8
