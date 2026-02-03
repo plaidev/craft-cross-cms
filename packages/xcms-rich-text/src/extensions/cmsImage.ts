@@ -9,6 +9,10 @@ import type { AssetData } from '../types/asset.js';
 
 export type ResolveAssetFn = (assetId: string) => AssetData | null;
 
+// Markdown syntax for CMS images: ![image](assetId)
+// Uses asset ID instead of URL because images are managed by CMS MediaLibrary.
+// inputRegex: has outer capture group for nodeInputRule, so id is match[2]
+// pasteRegex: no outer capture group for nodePasteRule, so id is match[1]
 const inputRegex = /(?:^|\s)(!\[image\]\(([a-z0-9]+)\))$/;
 const pasteRegex = /!\[image\]\(([a-z0-9]+)\)/g;
 
@@ -70,7 +74,7 @@ export function generateCmsImage({
         return [
           'img',
           mergeAttributes(HTMLAttributes, {
-            // imageRendererがセットされている時でも、こちらでリクエストが飛んでしまうことがあるのでimageRendererがある場合はsrcを空にしている
+            // When imageRenderer is set, requests may still be triggered here, so we set src to empty if imageRenderer exists
             src: imageRenderer ? node.attrs.src : '',
             alt: node.attrs.alt,
             width: node.attrs.width,
