@@ -19,6 +19,7 @@
     "test": "turbo run test",
     "lint": "pnpm run \"/^lint:.*/\"",
     "lint:eslint": "eslint .",
+    "lint:secretlint": "secretlint '**/*'",
     "lint:knip": "knip",
     "lint:prettier": "prettier --check .",
     "fix": "pnpm run \"/^fix:.*/\"",
@@ -30,11 +31,13 @@
   "devDependencies": {
     "@changesets/cli": "catalog:",
     "@eslint/js": "catalog:",
+    "@secretlint/secretlint-rule-preset-recommend": "catalog:",
     "eslint": "catalog:",
     "eslint-config-prettier": "catalog:",
     "knip": "catalog:",
     "prettier": "catalog:",
     "prettier-plugin-organize-imports": "catalog:",
+    "secretlint": "catalog:",
     "turbo": "catalog:",
     "typescript-eslint": "catalog:"
   }

@@ -7,12 +7,14 @@ const config: KnipConfig = {
       project: ['**/*.{js,ts}'],
     },
     'packages/*': {
-      entry: ['src/index.ts'],
       project: ['src/**/*.{js,ts}'],
     },
   },
   ignore: ['**/dist/**', '**/.turbo/**'],
-  ignoreDependencies: [],
+  ignoreDependencies: [
+    // Used in .secretlintrc.json which knip doesn't parse
+    '@secretlint/secretlint-rule-preset-recommend',
+  ],
   ignoreExportsUsedInFile: true,
 };
 
