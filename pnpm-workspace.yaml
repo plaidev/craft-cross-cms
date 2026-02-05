@@ -4,6 +4,7 @@ packages:
 catalog:
   '@changesets/cli': 2.29.8
   '@eslint/js': 9.39.2
+  '@secretlint/secretlint-rule-preset-recommend': 11.3.1
   '@tiptap/core': 3.10.1
   '@tiptap/extension-blockquote': 3.10.1
   '@tiptap/extension-bold': 3.10.1
@@ -36,6 +37,7 @@ catalog:
   knip: 5.82.1
   prettier: 3.8.1
   prettier-plugin-organize-imports: 4.3.0
+  secretlint: 11.3.1
   tsup: 8.5.1
   turbo: 2.7.5
   typescript-eslint: 8.53.1
