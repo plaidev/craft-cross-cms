@@ -1,6 +1,6 @@
 {
   "name": "@plaidev/xcms-rich-text",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "TipTap-based rich text core for Craft Cross CMS (xcms)",
   "license": "Apache-2.0",
   "author": "PLAID, Inc.",
