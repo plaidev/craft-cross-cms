@@ -1,10 +1,23 @@
 /**
  * @vitest-environment jsdom
  */
+import type { MarkdownLexerConfiguration, MarkdownToken } from '@tiptap/core';
 import { Editor } from '@tiptap/core';
 import StarterKit from '@tiptap/starter-kit';
 import { describe, expect, it, vi } from 'vitest';
 import { generateCmsImage, ResolveAssetFn } from './cmsImage.js';
+
+const stubHelpers = {
+  renderChildren: () => '',
+  wrapInBlock: () => '',
+  indent: (c: string) => c,
+};
+const stubCtx = { index: 0, level: 0 };
+const stubTokens: MarkdownToken[] = [];
+const stubLexer: MarkdownLexerConfiguration = {
+  inlineTokens: () => [],
+  blockTokens: () => [],
+};
 
 describe('cmsImage Extension', () => {
   describe('parseHTML', () => {
@@ -89,12 +102,25 @@ describe('cmsImage Extension', () => {
       // given
       const resolveAsset: ResolveAssetFn = (assetId) => ({
         id: assetId,
+        sys: {
+          createdAt: null,
+          createdBy: null,
+          updatedAt: null,
+          updatedBy: null,
+          publishedAt: null,
+        },
+        title: 'Test image',
+        description: 'Test description',
+        altText: 'Resolved alt text',
+        tagIds: [],
         file: {
+          name: 'resolved.jpg',
+          mimeType: 'image/jpeg',
           src: 'https://cdn.example.com/resolved.jpg',
+          size: 102400,
           width: 1200,
           height: 800,
         },
-        altText: 'Resolved alt text',
       });
 
       const CmsImage = generateCmsImage({ resolveAsset });
@@ -195,8 +221,8 @@ describe('cmsImage Extension', () => {
       });
 
       // when
-      const node = editor.state.doc.firstChild;
-      const result = CmsImage.config.renderMarkdown?.(node!);
+      const nodeJson = editor.getJSON().content![0]!;
+      const result = CmsImage.config.renderMarkdown?.(nodeJson, stubHelpers, stubCtx);
 
       // then
       expect(result).toBe('![image](asset123)\n\n');
@@ -221,8 +247,8 @@ describe('cmsImage Extension', () => {
       });
 
       // when
-      const node = editor.state.doc.firstChild;
-      const result = CmsImage.config.renderMarkdown?.(node!);
+      const nodeJson = editor.getJSON().content![0]!;
+      const result = CmsImage.config.renderMarkdown?.(nodeJson, stubHelpers, stubCtx);
 
       // then
       expect(result).toBe('');
@@ -239,7 +265,7 @@ describe('cmsImage Extension', () => {
       const tokenizer = CmsImage.config.markdownTokenizer;
 
       // when
-      const result = tokenizer?.tokenize?.(src);
+      const result = tokenizer?.tokenize(src, stubTokens, stubLexer);
 
       // then
       expect(result).toEqual({
@@ -256,7 +282,7 @@ describe('cmsImage Extension', () => {
       const tokenizer = CmsImage.config.markdownTokenizer;
 
       // when
-      const result = tokenizer?.tokenize?.(src);
+      const result = tokenizer?.tokenize(src, stubTokens, stubLexer);
 
       // then
       expect(result).toBeUndefined();
@@ -266,10 +292,10 @@ describe('cmsImage Extension', () => {
       // given
       const src = 'Some text ![image](abc123) more text';
       const CmsImage = generateCmsImage({});
-      const tokenizer = CmsImage.config.markdownTokenizer;
+      const { start } = CmsImage.config.markdownTokenizer ?? {};
 
       // when
-      const result = tokenizer?.start?.(src);
+      const result = typeof start === 'function' ? start(src) : undefined;
 
       // then
       expect(result).toBe(10);
