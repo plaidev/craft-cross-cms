@@ -25,9 +25,19 @@ yarn add @plaidev/xcms-rich-text
 
 ### Usage
 
-```typescript
-import { generateJSON, buildTiptapExtensions } from '@plaidev/xcms-rich-text';
+Import path depends on your environment:
 
+```typescript
+// Node.js (server-side)
+import { generateJSON, buildTiptapExtensions } from '@plaidev/xcms-rich-text/server';
+
+// Browser
+import { generateJSON, buildTiptapExtensions } from '@plaidev/xcms-rich-text';
+```
+
+The `/server` subpath uses [happy-dom](https://github.com/nicedayfor/happy-dom) internally to provide the DOM environment that `generateJSON` / `generateHTML` require. No additional setup is needed.
+
+```typescript
 const html = '<p>Hello <strong>World</strong>!</p>';
 const json = generateJSON(html, buildTiptapExtensions({}));
 
