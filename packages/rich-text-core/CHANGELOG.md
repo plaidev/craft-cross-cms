@@ -1,4 +1,4 @@
-# @plaidev/xcms-rich-text
+# @craft-cross-cms/rich-text-core
 
 ## 0.0.2
 

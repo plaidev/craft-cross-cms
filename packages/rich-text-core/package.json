@@ -1,5 +1,5 @@
 {
-  "name": "@plaidev/xcms-rich-text",
+  "name": "@craft-cross-cms/rich-text-core",
   "version": "0.0.2",
   "description": "TipTap-based rich text core for Craft Cross CMS (xcms)",
   "license": "Apache-2.0",
@@ -7,7 +7,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/plaidev/craft-cross-cms.git",
-    "directory": "packages/xcms-rich-text"
+    "directory": "packages/rich-text-core"
   },
   "engines": {
     "node": ">=20"
