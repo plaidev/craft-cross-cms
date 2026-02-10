@@ -4,11 +4,11 @@
 
 A monorepo for all NPM packages related to Craft Cross CMS (**xcms**).
 
-> **Note:** All packages are published under the `@plaidev` organization with the `xcms-*` naming pattern for brevity.
+> **Note:** All packages are published under the `@craft-cross-cms` organization.
 
 ## Packages
 
-### [@plaidev/xcms-rich-text](packages/xcms-rich-text)
+### [@craft-cross-cms/rich-text-core](packages/rich-text-core)
 
 TipTap-based rich text core library that provides HTML to JSON conversion functionality for rich text content.
 

@@ -1,4 +1,4 @@
-# @plaidev/xcms-rich-text
+# @craft-cross-cms/rich-text-core
 
 TipTap-based rich text core for Craft Cross CMS.
 This library provides HTML to JSON conversion functionality for rich text content.
@@ -8,19 +8,19 @@ This library provides HTML to JSON conversion functionality for rich text conten
 ### Installation
 
 ```bash
-npm install @plaidev/xcms-rich-text
+npm install @craft-cross-cms/rich-text-core
 ```
 
 or
 
 ```bash
-pnpm add @plaidev/xcms-rich-text
+pnpm add @craft-cross-cms/rich-text-core
 ```
 
 or
 
 ```bash
-yarn add @plaidev/xcms-rich-text
+yarn add @craft-cross-cms/rich-text-core
 ```
 
 ### Usage
@@ -29,10 +29,10 @@ Import path depends on your environment:
 
 ```typescript
 // Node.js (server-side)
-import { generateJSON, buildTiptapExtensions } from '@plaidev/xcms-rich-text/server';
+import { generateJSON, buildTiptapExtensions } from '@craft-cross-cms/rich-text-core/server';
 
 // Browser
-import { generateJSON, buildTiptapExtensions } from '@plaidev/xcms-rich-text';
+import { generateJSON, buildTiptapExtensions } from '@craft-cross-cms/rich-text-core';
 ```
 
 The `/server` subpath uses [happy-dom](https://github.com/nicedayfor/happy-dom) internally to provide the DOM environment that `generateJSON` / `generateHTML` require. No additional setup is needed.
@@ -67,7 +67,7 @@ When converting HTML to JSON, ensure that `img` tags include the following attri
 When creating HTML content that will be converted to JSON, set `data-asset-id`, `src`, `alt`, `width`, and `height` attributes on the `img` tag.
 
 ```typescript
-import { generateJSON, buildTiptapExtensions } from '@plaidev/xcms-rich-text';
+import { generateJSON, buildTiptapExtensions } from '@craft-cross-cms/rich-text-core';
 
 // HTML with properly formatted image
 const html = `
