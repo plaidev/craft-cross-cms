@@ -1,5 +1,11 @@
 # @craft-cross-cms/rich-text-core
 
+## 0.0.4
+
+### Patch Changes
+
+- 72fa6d1: Re-export `MarkdownExtensionOptions` and `MarkdownExtensionStorage` types from `@tiptap/markdown` to propagate its module augmentation to consumers.
+
 ## 0.0.3
 
 ### Patch Changes
