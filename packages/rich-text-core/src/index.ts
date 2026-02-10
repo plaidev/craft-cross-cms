@@ -23,6 +23,7 @@ export type { TableKitOptions } from '@tiptap/extension-table';
 export type { TextAlignOptions } from '@tiptap/extension-text-align';
 export type { UnderlineOptions } from '@tiptap/extension-underline';
 export type { CharacterCountOptions, CharacterCountStorage } from '@tiptap/extensions';
+export type { MarkdownExtensionOptions, MarkdownExtensionStorage } from '@tiptap/markdown';
 
 // Extensions
 export {
