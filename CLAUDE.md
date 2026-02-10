@@ -21,7 +21,7 @@ pnpm dev           # watchモードで開発（turbo使用）
 pnpm test          # 全テストを実行（turbo使用）
 ```
 
-`packages/core`ディレクトリ内から：
+`packages/rich-text-core`ディレクトリ内から：
 
 ```bash
 pnpm test          # vitestでテストを実行（テストがなくても成功）
