@@ -24,13 +24,12 @@ import { CharacterCount, Dropcursor, TrailingNode, UndoRedo } from '@tiptap/exte
 import { Markdown } from '@tiptap/markdown';
 import { all, createLowlight } from 'lowlight';
 import type { AssetData } from '../types/asset.js';
-import { CLASS_NAME_PATTERN, isValidClassName } from './classNameValidator.js';
 import { EmbedRenderer, generateCmsEmbedExtension } from './cmsEmbed.js';
 import { generateCmsImage, type ResolveAssetFn } from './cmsImage.js';
 import { CustomClass } from './customClass.js';
 import { PasteMarkdown } from './pasteMarkdown.js';
 
-export { CLASS_NAME_PATTERN, CustomClass, isValidClassName };
+export { CustomClass };
 export type { ResolveAssetFn };
 
 const TIPTAP_BASE_EXTENSIONS: Extensions = [
