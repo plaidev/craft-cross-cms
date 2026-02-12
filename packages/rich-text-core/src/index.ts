@@ -25,13 +25,11 @@ export type { UnderlineOptions } from '@tiptap/extension-underline';
 export type { CharacterCountOptions, CharacterCountStorage } from '@tiptap/extensions';
 export type { MarkdownExtensionOptions, MarkdownExtensionStorage } from '@tiptap/markdown';
 
-// Extensions
-export {
-  CLASS_NAME_PATTERN,
-  CustomClass,
-  buildTiptapExtensions,
-  isValidClassName,
-} from './extensions/index.js';
+// Extensions (light: no tiptap dependency)
+export { CLASS_NAME_PATTERN, isValidClassName } from './extensions/classNameValidator.js';
+
+// Extensions (heavy: pulls in tiptap)
+export { CustomClass, buildTiptapExtensions } from './extensions/index.js';
 export type { ResolveAssetFn } from './extensions/index.js';
 
 // Options
