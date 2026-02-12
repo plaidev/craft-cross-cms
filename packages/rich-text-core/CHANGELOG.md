@@ -1,5 +1,11 @@
 # @craft-cross-cms/rich-text-core
 
+## 0.0.5
+
+### Patch Changes
+
+- 048fd96: Enable tree-shaking for constant-only imports by switching tsup to unbundled output, adding sideEffects: false, and re-exporting light utilities directly from their source module to avoid pulling in tiptap dependencies.
+
 ## 0.0.4
 
 ### Patch Changes
