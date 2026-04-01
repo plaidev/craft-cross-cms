@@ -44,4 +44,8 @@ catalog:
   typescript-eslint: 8.53.1
   vitest: 4.0.18
 
+minimumReleaseAge: 10080
+
+trustPolicy: no-downgrade
+
 useNodeVersion: 24.13.0
