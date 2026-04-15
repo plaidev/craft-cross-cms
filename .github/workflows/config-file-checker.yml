@@ -8,6 +8,6 @@ jobs:
   checker:
     uses: plaidev/plaidev-config-file-checker/.github/workflows/send-result.yml@f19ece4ff3a79e3224d389a92d29f32c0f142939
     with:
-      APP_ID: 135171
+      APP_ID: 3384349
     secrets:
-      APP_PRIVATE_KEY: ${{ secrets.SHARED_GITHUB_ACTION_AGENT_APP_PRIVATE_KEY }}
+      APP_PRIVATE_KEY: ${{ secrets.SHARED_SUPPLY_CHAIN_CONFIG_CHECKER_PRIVATE_KEY }}
