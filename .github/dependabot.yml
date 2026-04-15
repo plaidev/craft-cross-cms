@@ -1,9 +1,9 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "weekly"
+      interval: 'weekly'
     cooldown:
       default-days: 7
       semver-major-days: 7
@@ -12,17 +12,17 @@ updates:
     groups:
       tiptap:
         patterns:
-          - "@tiptap/*"
+          - '@tiptap/*'
       development-dependencies:
-        dependency-type: "development"
+        dependency-type: 'development'
         update-types:
-          - "minor"
-          - "patch"
+          - 'minor'
+          - 'patch'
         exclude-patterns:
-          - "@tiptap/*"
+          - '@tiptap/*'
       production-dependencies:
-        dependency-type: "production"
+        dependency-type: 'production'
         update-types:
-          - "patch"
+          - 'patch'
         exclude-patterns:
-          - "@tiptap/*"
+          - '@tiptap/*'
