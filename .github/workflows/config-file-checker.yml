@@ -1,0 +1,13 @@
+name: Config file checker
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch: {}
+
+jobs:
+  checker:
+    uses: plaidev/plaidev-config-file-checker/.github/workflows/send-result.yml@f19ece4ff3a79e3224d389a92d29f32c0f142939
+    with:
+      APP_ID: 135171
+    secrets:
+      APP_PRIVATE_KEY: ${{ secrets.SHARED_GITHUB_ACTION_AGENT_APP_PRIVATE_KEY }}
