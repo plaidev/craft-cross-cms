@@ -78,6 +78,7 @@
     "@tiptap/extensions": "catalog:",
     "@tiptap/markdown": "catalog:",
     "@tiptap/pm": "catalog:",
+    "happy-dom": "catalog:",
     "lowlight": "3.3.0"
   },
   "devDependencies": {
