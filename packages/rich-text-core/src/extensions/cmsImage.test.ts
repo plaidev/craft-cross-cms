@@ -4,7 +4,7 @@
 import type { MarkdownLexerConfiguration, MarkdownToken } from '@tiptap/core';
 import { Editor } from '@tiptap/core';
 import StarterKit from '@tiptap/starter-kit';
-import { describe, expect, it, vi } from 'vitest';
+import { assert, describe, expect, it, vi } from 'vitest';
 import { generateCmsImage, ResolveAssetFn } from './cmsImage.js';
 
 const stubHelpers = {
@@ -293,9 +293,10 @@ describe('cmsImage Extension', () => {
       const src = 'Some text ![image](abc123) more text';
       const CmsImage = generateCmsImage({});
       const { start } = CmsImage.config.markdownTokenizer ?? {};
+      assert(typeof start === 'function');
 
       // when
-      const result = typeof start === 'function' ? start(src) : undefined;
+      const result = start(src);
 
       // then
       expect(result).toBe(10);
@@ -308,9 +309,10 @@ describe('cmsImage Extension', () => {
       const src = '[![image](abc123)](https://example.com)';
       const CmsImage = generateCmsImage({});
       const { start } = CmsImage.config.markdownTokenizer ?? {};
+      assert(typeof start === 'function');
 
       // when
-      const result = typeof start === 'function' ? start(src) : undefined;
+      const result = start(src);
 
       // then: position 1 の ![image]( は [ に前置されているのでスキップ
       expect(result).toBe(-1);
@@ -321,9 +323,10 @@ describe('cmsImage Extension', () => {
       const src = 'Some text ![image](abc123) more text';
       const CmsImage = generateCmsImage({});
       const { start } = CmsImage.config.markdownTokenizer ?? {};
+      assert(typeof start === 'function');
 
       // when
-      const result = typeof start === 'function' ? start(src) : undefined;
+      const result = start(src);
 
       // then
       expect(result).toBe(10);
@@ -334,9 +337,10 @@ describe('cmsImage Extension', () => {
       const src = '![image](abc123)';
       const CmsImage = generateCmsImage({});
       const { start } = CmsImage.config.markdownTokenizer ?? {};
+      assert(typeof start === 'function');
 
       // when
-      const result = typeof start === 'function' ? start(src) : undefined;
+      const result = start(src);
 
       // then
       expect(result).toBe(0);

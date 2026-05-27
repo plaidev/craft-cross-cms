@@ -6,7 +6,7 @@ import { Editor } from '@tiptap/core';
 import Link from '@tiptap/extension-link';
 import { TableKit } from '@tiptap/extension-table';
 import StarterKit from '@tiptap/starter-kit';
-import { describe, expect, it } from 'vitest';
+import { assert, describe, expect, it } from 'vitest';
 import { generateCmsImage, type ResolveAssetFn } from './cmsImage.js';
 import { generateCmsImageInline } from './cmsImageInline.js';
 
@@ -555,9 +555,10 @@ describe('cmsImageInline markdownTokenizer', () => {
     const src = 'Some text [![image](abc123)](https://example.com)';
     const CmsImageInline = generateCmsImageInline({});
     const { start } = CmsImageInline.config.markdownTokenizer ?? {};
+    assert(typeof start === 'function');
 
     // when
-    const result = typeof start === 'function' ? start(src) : undefined;
+    const result = start(src);
 
     // then
     expect(result).toBe(10);
