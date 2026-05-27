@@ -302,6 +302,74 @@ describe('cmsImage Extension', () => {
     });
   });
 
+  describe('tokenizer start() の [![image]( スキップ', () => {
+    it('[![image]( で始まる位置をスキップする', () => {
+      // given
+      const src = '[![image](abc123)](https://example.com)';
+      const CmsImage = generateCmsImage({});
+      const { start } = CmsImage.config.markdownTokenizer ?? {};
+
+      // when
+      const result = typeof start === 'function' ? start(src) : undefined;
+
+      // then: position 1 の ![image]( は [ に前置されているのでスキップ
+      expect(result).toBe(-1);
+    });
+
+    it('通常の ![image]( の開始位置検出は変わらない', () => {
+      // given
+      const src = 'Some text ![image](abc123) more text';
+      const CmsImage = generateCmsImage({});
+      const { start } = CmsImage.config.markdownTokenizer ?? {};
+
+      // when
+      const result = typeof start === 'function' ? start(src) : undefined;
+
+      // then
+      expect(result).toBe(10);
+    });
+
+    it('先頭の ![image]( を正しく検出する', () => {
+      // given
+      const src = '![image](abc123)';
+      const CmsImage = generateCmsImage({});
+      const { start } = CmsImage.config.markdownTokenizer ?? {};
+
+      // when
+      const result = typeof start === 'function' ? start(src) : undefined;
+
+      // then
+      expect(result).toBe(0);
+    });
+  });
+
+  describe('pasteRegex の [![image]( 除外', () => {
+    it('[![image](id)](url) 内の ![image](id) にマッチしない', () => {
+      // given
+      const src = '[![image](abc123)](https://example.com)';
+      const pasteRegex = /(?<!\[)!\[image\]\(([a-z0-9]+)\)/g;
+
+      // when
+      const matches = [...src.matchAll(pasteRegex)];
+
+      // then
+      expect(matches).toHaveLength(0);
+    });
+
+    it('単独の ![image](id) には引き続きマッチする', () => {
+      // given
+      const src = '![image](abc123)';
+      const pasteRegex = /(?<!\[)!\[image\]\(([a-z0-9]+)\)/g;
+
+      // when
+      const matches = [...src.matchAll(pasteRegex)];
+
+      // then
+      expect(matches).toHaveLength(1);
+      expect(matches[0][1]).toBe('abc123');
+    });
+  });
+
   describe('imageRenderer', () => {
     it('should set addNodeView when imageRenderer is provided', () => {
       // given

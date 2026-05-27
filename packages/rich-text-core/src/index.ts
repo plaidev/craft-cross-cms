@@ -31,6 +31,7 @@ export { CLASS_NAME_PATTERN, isValidClassName } from './extensions/classNameVali
 // Extensions (heavy: pulls in tiptap)
 export { CustomClass, buildTiptapExtensions } from './extensions/index.js';
 export type { ResolveAssetFn } from './extensions/index.js';
+export { generateCmsImageInline } from './extensions/cmsImageInline.js';
 
 // Options
 export { RICH_TEXT_EDITOR_OPTIONS, type RichTextEditorOptions } from './options.js';

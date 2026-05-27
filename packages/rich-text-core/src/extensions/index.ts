@@ -26,6 +26,7 @@ import { all, createLowlight } from 'lowlight';
 import type { AssetData } from '../types/asset.js';
 import { EmbedRenderer, generateCmsEmbedExtension } from './cmsEmbed.js';
 import { generateCmsImage, type ResolveAssetFn } from './cmsImage.js';
+import { generateCmsImageInline } from './cmsImageInline.js';
 import { CustomClass } from './customClass.js';
 import { PasteMarkdown } from './pasteMarkdown.js';
 
@@ -150,6 +151,7 @@ export const buildTiptapExtensions = ({
     ...TIPTAP_BASE_EXTENSIONS,
     CustomClass,
     generateCmsImage({ resolveAsset, imageRenderer }),
+    generateCmsImageInline({ resolveAsset, imageRenderer }),
     generateCmsEmbedExtension({
       renderer: embedRenderer,
     }),

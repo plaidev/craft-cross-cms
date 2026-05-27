@@ -2,21 +2,12 @@ import {
   NodeConfig,
   Node as TiptapNode,
   mergeAttributes,
-  nodeInputRule,
-  nodePasteRule,
 } from '@tiptap/core';
 import type { AssetData } from '../types/asset.js';
 
 export type ResolveAssetFn = (assetId: string) => AssetData | null;
 
-// Markdown syntax for CMS images: ![image](assetId)
-// Uses asset ID instead of URL because images are managed by CMS MediaLibrary.
-// inputRegex: has outer capture group for nodeInputRule, so id is match[2]
-// pasteRegex: no outer capture group for nodePasteRule, so id is match[1]
-const inputRegex = /(?:^|\s)(!\[image\]\(([a-z0-9]+)\))$/;
-const pasteRegex = /(?<!\[)!\[image\]\(([a-z0-9]+)\)/g;
-
-export function generateCmsImage({
+export function generateCmsImageInline({
   resolveAsset,
   imageRenderer,
 }: {
@@ -24,11 +15,12 @@ export function generateCmsImage({
   imageRenderer?: NodeConfig['addNodeView'];
 }) {
   const config: NodeConfig = {
-    name: 'cmsImage',
-    inline: false,
-    group: 'block',
+    name: 'cmsImageInline',
+    inline: true,
+    group: 'inline',
     atom: true,
     draggable: true,
+    marks: '_',
 
     addAttributes() {
       return {
@@ -65,6 +57,11 @@ export function generateCmsImage({
       return [
         {
           tag: 'img[data-asset-id]',
+          priority: 60,
+          getAttrs: (element) => {
+            if (element.parentElement?.tagName === 'A') return {};
+            return false;
+          },
         },
       ];
     },
@@ -74,7 +71,6 @@ export function generateCmsImage({
         return [
           'img',
           mergeAttributes(HTMLAttributes, {
-            // When imageRenderer is set, requests may still be triggered here, so we set src to empty if imageRenderer exists
             src: imageRenderer ? node.attrs.src : '',
             alt: node.attrs.alt,
             width: node.attrs.width,
@@ -109,10 +105,12 @@ export function generateCmsImage({
     },
 
     parseMarkdown(token, helpers) {
-      return helpers.createNode('cmsImage', {
+      const imageNode = helpers.createNode('cmsImageInline', {
         id: token.id,
         'data-asset-id': token.id,
       });
+      imageNode.marks = [{ type: 'link', attrs: { href: token.href } }];
+      return helpers.createNode('paragraph', {}, [imageNode]);
     },
 
     renderMarkdown(node) {
@@ -120,24 +118,22 @@ export function generateCmsImage({
       if (typeof id !== 'string') {
         return '';
       }
-      return `![image](${id})\n\n`;
+      const linkMark = node.marks?.find((m) => m.type === 'link');
+      const href = linkMark?.attrs?.href;
+      if (typeof href === 'string' && href.length > 0) {
+        return `[![image](${id})](${href})`;
+      }
+      return `![image](${id})`;
     },
 
     markdownTokenizer: {
-      name: 'cmsImage',
+      name: 'cmsImageInline',
       level: 'block',
       start(src) {
-        let pos = 0;
-        while (pos < src.length) {
-          const idx = src.indexOf('![image](', pos);
-          if (idx < 0) return -1;
-          if (idx === 0 || src[idx - 1] !== '[') return idx;
-          pos = idx + 1;
-        }
-        return -1;
+        return src.indexOf('[![image](');
       },
       tokenize(src) {
-        const rule = /^!\[image\]\(([a-z0-9]+)\)/;
+        const rule = /^\[!\[image\]\(([a-z0-9]+)\)\]\(([^)]+)\)/;
         const match = rule.exec(src);
 
         if (!match) {
@@ -145,35 +141,12 @@ export function generateCmsImage({
         }
 
         return {
-          type: 'cmsImage',
+          type: 'cmsImageInline',
           raw: match[0],
           id: match[1],
+          href: match[2],
         };
       },
-    },
-
-    addInputRules() {
-      return [
-        nodeInputRule({
-          find: inputRegex,
-          type: this.type,
-          getAttributes: (match) => {
-            return { id: match[2] };
-          },
-        }),
-      ];
-    },
-
-    addPasteRules() {
-      return [
-        nodePasteRule({
-          find: pasteRegex,
-          type: this.type,
-          getAttributes: (match) => {
-            return { id: match[1] };
-          },
-        }),
-      ];
     },
   };
 
