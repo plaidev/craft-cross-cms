@@ -1,8 +1,4 @@
-import {
-  NodeConfig,
-  Node as TiptapNode,
-  mergeAttributes,
-} from '@tiptap/core';
+import { NodeConfig, Node as TiptapNode, mergeAttributes } from '@tiptap/core';
 import type { AssetData } from '../types/asset.js';
 
 export type ResolveAssetFn = (assetId: string) => AssetData | null;

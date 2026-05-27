@@ -6,7 +6,7 @@ import { Editor } from '@tiptap/core';
 import Link from '@tiptap/extension-link';
 import { TableKit } from '@tiptap/extension-table';
 import StarterKit from '@tiptap/starter-kit';
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { generateCmsImage, type ResolveAssetFn } from './cmsImage.js';
 import { generateCmsImageInline } from './cmsImageInline.js';
 
@@ -161,8 +161,7 @@ describe('cmsImageInline parseHTML', () => {
 
   it('親aタグのhrefをLink Markとして保持する', () => {
     // given
-    const html =
-      '<p><a href="https://example.com/link"><img data-asset-id="asset1"></a></p>';
+    const html = '<p><a href="https://example.com/link"><img data-asset-id="asset1"></a></p>';
 
     // when
     const editor = createEditor(html);
@@ -317,9 +316,7 @@ describe('cmsImageInline Link Mark統合', () => {
       content: [
         {
           type: 'paragraph',
-          content: [
-            { type: 'cmsImageInline', attrs: { id: 'img1' } },
-          ],
+          content: [{ type: 'cmsImageInline', attrs: { id: 'img1' } }],
         },
       ],
     };
@@ -584,7 +581,12 @@ describe('cmsImageInline parseMarkdown', () => {
   it('トークンからparagraph > cmsImageInline + Link MarkのJSONを生成する', () => {
     // given
     const CmsImageInline = generateCmsImageInline({});
-    const token = { type: 'cmsImageInline', raw: '[![image](abc123)](https://example.com)', id: 'abc123', href: 'https://example.com' } as unknown as MarkdownToken;
+    const token = {
+      type: 'cmsImageInline',
+      raw: '[![image](abc123)](https://example.com)',
+      id: 'abc123',
+      href: 'https://example.com',
+    } as unknown as MarkdownToken;
     const createdNodes: Array<{ type: string; attrs?: unknown; content?: unknown[] }> = [];
     const helpers = {
       parseInline: () => [],
@@ -740,9 +742,7 @@ describe('block cmsImage と inline cmsImageInline の共存', () => {
                 },
                 {
                   type: 'tableCell',
-                  content: [
-                    { type: 'paragraph', content: [{ type: 'text', text: 'セル2' }] },
-                  ],
+                  content: [{ type: 'paragraph', content: [{ type: 'text', text: 'セル2' }] }],
                 },
               ],
             },
@@ -909,9 +909,7 @@ describe('cmsImageInline エディタ操作安全性', () => {
                 },
                 {
                   type: 'tableCell',
-                  content: [
-                    { type: 'paragraph', content: [{ type: 'text', text: 'セル2' }] },
-                  ],
+                  content: [{ type: 'paragraph', content: [{ type: 'text', text: 'セル2' }] }],
                 },
               ],
             },
