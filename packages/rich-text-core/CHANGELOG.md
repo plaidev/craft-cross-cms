@@ -1,5 +1,11 @@
 # @craft-cross-cms/rich-text-core
 
+## 0.0.7
+
+### Patch Changes
+
+- 915f900: add cmsImageInline extension
+
 ## 0.0.6
 
 ### Patch Changes
