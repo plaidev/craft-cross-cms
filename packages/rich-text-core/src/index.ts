@@ -29,7 +29,6 @@ export type { MarkdownExtensionOptions, MarkdownExtensionStorage } from '@tiptap
 export { CLASS_NAME_PATTERN, isValidClassName } from './extensions/classNameValidator.js';
 
 // Extensions (heavy: pulls in tiptap)
-export { generateCmsImageInline } from './extensions/cmsImageInline.js';
 export { CustomClass, buildTiptapExtensions } from './extensions/index.js';
 export type { ResolveAssetFn } from './extensions/index.js';
 
