@@ -1,5 +1,11 @@
 # @craft-cross-cms/rich-text-core
 
+## 0.0.6
+
+### Patch Changes
+
+- fb2b9d1: Bump happy-dom to 20.8.9 to address GHSA-6q6h-j7hj-3r64 and GHSA-w4gp-fjgq-3q4g, and declare it as a direct dependency.
+
 ## 0.0.5
 
 ### Patch Changes

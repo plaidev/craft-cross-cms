@@ -1,6 +1,6 @@
 {
   "name": "@craft-cross-cms/rich-text-core",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "TipTap-based rich text core for Craft Cross CMS (xcms)",
   "license": "Apache-2.0",
   "author": "PLAID, Inc.",
@@ -78,6 +78,7 @@
     "@tiptap/extensions": "catalog:",
     "@tiptap/markdown": "catalog:",
     "@tiptap/pm": "catalog:",
+    "happy-dom": "catalog:",
     "lowlight": "3.3.0"
   },
   "devDependencies": {
