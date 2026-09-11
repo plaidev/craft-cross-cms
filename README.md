@@ -12,6 +12,10 @@ A monorepo for all NPM packages related to Craft Cross CMS (**xcms**).
 
 TipTap-based rich text core library that provides HTML to JSON conversion functionality for rich text content.
 
+### [@craft-cross-cms/content-references](packages/content-references)
+
+Resolves the reference fields of contents into the referenced contents, one level deep, with a fixed set of rules and an injected fetch function.
+
 ## Getting Help
 
 - **Have a bug to report?**

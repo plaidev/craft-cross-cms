@@ -75,6 +75,14 @@ pnpm fix:prettier        # Prettierフォーマットを自動修正
 - `RICH_TEXT_EDITOR_OPTIONS`: エディタで利用可能な全機能を列挙した定数
 - 型: `RichTextEditorOptions`
 
+### パッケージ: @craft-cross-cms/content-references
+
+メインエントリポイント: `packages/content-references/src/index.ts`
+
+- `buildCmsReferencePlan()`: モデル定義の `fields` から reference フィールドの plan（`field` / `refModel` / `multiple`）を導出
+- `resolveCmsReferences()`: plan と注入された `fetchByIds` で reference フィールドを参照先コンテンツに置き換える（1階層のみ、未解決は `null` / 配列から除外、`$in` 上限 50 でチャンク、失敗時は全体 reject）
+- 依存ゼロ。解決ルールは `packages/content-references/README.md` が正本
+
 ## テスト
 
 - テストファイルは`*.test.ts`の命名規則を使用
