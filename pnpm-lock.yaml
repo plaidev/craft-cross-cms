@@ -2625,8 +2625,8 @@ packages:
     resolution: {integrity: sha512-qMCMfhY040cVHT43K9BFygqYbUPFZKHOg7K73mtTWJRb8pyP3fzf4Ixd5SzdEJQ6MRUg/WBnOLxghZtKKurENQ==}
     engines: {node: '>=10'}
 
-  smol-toml@1.6.0:
-    resolution: {integrity: sha512-4zemZi0HvTnYwLfrpk/CF9LOd9Lt87kAt50GnqhMpyF9U3poDAP2+iukq2bZsO/ufegbYehBkqINbsWxj4l4cw==}
+  smol-toml@1.8.0:
+    resolution: {integrity: sha512-kCZr2V3ch9i00x8zXRhjUNVcjG9ijES5dDudkXvUVCT5QlJNQWElSJdZqyPemffHoLNUYwOcou0Fy+ojN0uHSQ==}
     engines: {node: '>= 18'}
 
   source-map-js@1.2.1:
@@ -4846,7 +4846,7 @@ snapshots:
       oxc-resolver: 11.16.3
       picocolors: 1.1.1
       picomatch: 4.0.4
-      smol-toml: 1.6.0
+      smol-toml: 1.8.0
       strip-json-comments: 5.0.3
       typescript: 5.9.3
       zod: 4.3.6
@@ -5316,7 +5316,7 @@ snapshots:
       astral-regex: 2.0.0
       is-fullwidth-code-point: 3.0.0
 
-  smol-toml@1.6.0: {}
+  smol-toml@1.8.0: {}
 
   source-map-js@1.2.1: {}
 
