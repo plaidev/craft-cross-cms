@@ -1,5 +1,11 @@
 # @craft-cross-cms/rich-text-core
 
+## 0.0.8
+
+### Patch Changes
+
+- 3948858: Bump `@tiptap/*` to 3.31.3 to address GHSA-j95f-988m-3j2f and GHSA-cp6q-959q-f8rh.
+
 ## 0.0.7
 
 ### Patch Changes
