@@ -47,6 +47,12 @@ catalog:
 
 minimumReleaseAge: 10080
 
+overrides:
+  # GHSA-fx2h-pf6j-xcff, GHSA-v6wh-96g9-6wx3 (alert #45, #48) / severity: high
+  # 親 vitest の既存解決で vite@7.3.2 が据え置かれ、再解決すると vite 8 (major) になるため 7.x に一時的に override。
+  # 親側が追随したら削除可能か確認すること。追加日: 2026-09-15
+  vite: 7.3.6
+
 trustPolicy: no-downgrade
 
 useNodeVersion: 24.13.0
