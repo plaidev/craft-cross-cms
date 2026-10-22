@@ -49,4 +49,4 @@ minimumReleaseAge: 10080
 
 trustPolicy: no-downgrade
 
-useNodeVersion: 24.13.0
+useNodeVersion: 24.22.1
